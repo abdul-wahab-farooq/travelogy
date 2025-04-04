@@ -1,0 +1,153 @@
+*,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter';
+}
+
+:root {
+    --blue: #007bff;
+    --dark-gray: #212529;
+}
+
+/* navbar */
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.navbar-nav .nav-link {
+    box-shadow: -1px -1px 1.5px white;
+    background-color: #1f6abb;
+    margin-top: 5px;
+}
+
+.navbar-nav a {
+    transition: all 0.2s;
+}
+
+.navbar-nav a:hover i {
+    color: white !important;
+}
+
+/* end navbar */
+
+/* wrapper */
+.wrapper {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* end wrapper */
+
+/* sidebar */
+.profile-img {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.side-role {
+    position: relative;
+}
+
+.side-role::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 3px;
+    width: 110%;
+    background-color: var(--blue);
+}
+
+.side-nav .nav-link i {
+    transition: all 0.2s;
+}
+
+.side-nav .nav-link:hover i {
+    background-color: var(--blue);
+    color: white !important;
+}
+
+#sidebar {
+    width: 0;
+    background: rgb(108, 117, 125);
+    background: linear-gradient(180deg, rgba(108, 117, 125, 1) 8%, rgba(248, 249, 250, 1) 82%);
+    color: var(--dark-gray);
+    height: 100%;
+    overflow: auto;
+    transition: all 0.3s ease;
+    position: fixed;
+    overflow-x: hidden;
+    left: 0;
+    top: 0;
+    padding-top: 55px;
+    text-wrap: nowrap;
+}
+
+.side-nav .nav-link {
+    color: var(--dark-gray);
+    display: block;
+    font-weight: 700;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.side-nav .nav-link:hover {
+    border-left: 5px solid var(--blue);
+    background: #549ff054;
+    color: var(--light-gray);
+}
+
+.collapse a {
+    font-size: 0.9rem;
+    transition: all 0.1s;
+}
+
+.collapse a:hover {
+    background-color: var(--blue);
+    color: white !important;
+}
+
+
+/* sidebar open */
+#sidebar.open {
+    width: 260px;
+}
+
+/* end sidebar */
+
+/* content */
+.main-content {
+    flex-grow: 1;
+    transition: all 0.3s ease;
+    width: 100%;
+    background-color: #f6f9fb;
+    margin-top: 55px;
+}
+
+.wrapper.sidebar-open .main-content {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+}
+
+.dash-banner {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left center;
+    height: 360px;
+}
+
+/* end content */
+
+/* agent_add */
+input,
+select,
+textarea {
+    border: 1px solid var(--blue) !important;
+}
+
+/* end agent_add */

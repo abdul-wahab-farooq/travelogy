@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agent View 3 | Travelogy</title>
+    <!-- css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font family -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jersey+15&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Karla:ital,wght@0,200..800;1,200..800&family=Liter&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <!-- bootstrap tooltip -->
+    <script src="assets/js/tooltip.js"></script>
+    <!-- animate.style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- data tables css -->
+    <link rel="stylesheet" href="assets/libs/DataTables/datatables.min.css">
+    <style>
+        .dt-layout-row:first-child {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg bg-primary fixed-top p-0">
+            <div class="container-fluid">
+                <div class="p-1 bg-white rounded-2 me-3">
+                    <a class="sidebar-toggle text-decoration-none fs-6 fw-bold shadow rounded-1 px-1 d-block"
+                        type="button" onclick="toggleSidebar()">☰</a>
+                </div>
+                <a class="navbar-brand animate__animated animate__bounceIn" href="index.html">
+                    <img src="assets/images/logo.png" width="50" class="me-1" alt="logo"><span
+                        class="text-white text-uppercase fw-bolder">Travelogy</span>
+                </a>
+                <a class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-ellipsis-v text-white"></i>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <form role="search" class="me-4">
+                            <div class="input-group">
+                                <div class="input-group-text border-0 bg-white rounded-start py-1 px-2 mt-1"><i
+                                        class="fas fa-search text-primary"></i></div>
+                                <input type="text" class="form-control border-0 rounded-end p-1 mt-1"
+                                    id="autoSizingInputGroup" placeholder="Search here...">
+                            </div>
+                        </form>
+                        <li class="nav-item me-4">
+                            <a href="tasks.html" class="nav-link text-white px-2 py-1 rounded-1" id="hoverDropdown"
+                                role="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tasks">
+                                <i class="fas fa-list-ol"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item me-4">
+                            <a href="messages.html" class="nav-link px-2 py-1 rounded-1" id="hoverDropdown"
+                                role="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="Messages">
+                                <i class="fas fa-bell text-white"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item me-4">
+                            <a href="alerts.html" class="nav-link px-2 py-1 rounded-1" id="hoverDropdown" role="button"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Alert">
+                                <i class="fas fa-comments text-white"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item me-4 dropdown">
+                            <a class="nav-link px-2 py-1 rounded-1" id="hoverDropdown" role="button">
+                                <i class="fas fa-user-circle text-white"></i>
+                            </a>
+                            <ul class="dropdown-menu p-1" style="margin-left: -120px;font-size: 0.9rem;">
+                                <li class="pt-2">
+                                    <a href="profile.html"
+                                        class="text-decoration-none text-secondary rounded-2 d-block p-2 fw-bold">
+                                        <i class="fas fa-user-alt me-2 text-primary"></i>
+                                        View Profile
+                                    </a>
+                                </li>
+                                <li class="pt-2">
+                                    <a href=""
+                                        class="text-decoration-none text-secondary rounded-2 d-block p-2 fw-bold">
+                                        <i class="fas fa-cogs me-1 text-primary"></i>
+                                        Settings
+                                    </a>
+                                </li>
+                                <li class="pt-2">
+                                    <a href=""
+                                        class="text-decoration-none text-secondary rounded-2 d-block p-2 fw-bold">
+                                        <i class="fas fa-sign-out-alt me-2 text-primary"></i>
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- end navbar -->
+
+    <!-- wrapper -->
+    <div class="wrapper sidebar-open">
+        <!-- sidebar -->
+        <div id="sidebar" class="open">
+            <div class="row border-bottom pb-3 p-3">
+                <div class="col-4">
+                    <div class="rounded-circle border img-fluid w-100 h-100 profile-img"
+                        style="background-image: url('assets/images/profile.jpeg');"></div>
+                </div>
+                <div class="col-8">
+                    <h5 class="fw-bold pt-2 mb-1 text-white">Abdul Wahab</h5>
+                    <p style="font-size: 0.8rem;" class="text-white side-role d-inline">Dept Admin</p>
+                </div>
+            </div>
+            <div class="my-2 side-nav">
+                <a href="index.html" class="nav-link px-3 py-2 mb-2">
+                    <i class="fas fa-tachometer-alt text-primary me-2 p-2 rounded-2"></i>Dashboard
+                </a>
+                <a href="index2.html" class="nav-link px-3 py-2 mb-2">
+                    <i class="fas fa-chart-line text-primary me-2 p-2 rounded-2"></i>Dashboard 2
+                </a>
+                <div class="dropdown">
+                    <button class="dropdown-toggle text-start mb-2 nav-link px-3 py-2 w-100" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#dropdown1" aria-expanded="false">
+                        <i class="fas fa-user-shield text-primary me-2 p-2 rounded-2"></i>Agents
+                    </button>
+                    <div class="collapse shadow bg-white" id="dropdown1">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="dropdown-item ps-4 text-dark py-2 d-block text-decoration-none fw-bold"
+                                    href="agent_add.html">Register New Agent</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item ps-4 text-dark py-2 d-block text-decoration-none fw-bold"
+                                    href="agent_view.html">View All Agent</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-toggle text-start mb-2 nav-link px-3 py-2 w-100" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#dropdown3" aria-expanded="false">
+                        <i class="far fa-handshake text-primary me-2 p-2 rounded-2"></i>Thank you
+                    </button>
+                    <div class="collapse shadow bg-white" id="dropdown3">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="dropdown-item ps-4 text-dark py-2 d-block text-decoration-none fw-bold"
+                                    href="thank.html">Thank you</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item ps-4 text-dark py-2 d-block text-decoration-none fw-bold"
+                                    href="thank2.html">Thank you 2</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-toggle text-start mb-2 nav-link px-3 py-2 w-100" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#dropdown2" aria-expanded="false">
+                        <i class="fa fa-ticket-alt text-primary me-2 p-2 rounded-2"></i>Vouchers
+                    </button>
+                    <div class="collapse shadow bg-white" id="dropdown2">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="dropdown-item ps-4 text-dark py-2 d-block text-decoration-none fw-bold"
+                                    href="hotel_vouch_add.html">Create New Voucher</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item ps-4 text-dark py-2 d-block text-decoration-none fw-bold"
+                                    href="voucher_view.html">View All Vouchers</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="profile.html" class="nav-link px-3 py-2 mb-2">
+                    <i class="fas fa-user-circle text-primary me-2 p-2 rounded-2"></i>My Profile
+                </a>
+                <a href="pnr.html" class="nav-link px-3 py-2 mb-2">
+                    <i class="fas fa-file-invoice text-primary me-2 p-2 rounded-2"></i>Pnr
+                </a>
+                <a href="invoice.html" class="nav-link px-3 py-2 mb-2">
+                    <i class="fas fa-file-invoice text-primary me-2 p-2 rounded-2"></i>Invoice
+                </a>
+                <a href="flight.html" class="nav-link px-3 py-2 mb-2">
+                    <i class="fas fa-plane text-primary me-2 p-2 rounded-2"></i>Flights
+                </a>
+                <div class="dropdown">
+                    <button class="dropdown-toggle text-start mb-2 nav-link px-3 py-2 w-100" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#dropdown4" aria-expanded="false">
+                        <i class="fa fa-ticket-alt text-primary me-2 p-2 rounded-2"></i>Bookings
+                    </button>
+                    <div class="collapse shadow bg-white" id="dropdown4">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="dropdown-item ps-4 text-dark py-2 d-block text-decoration-none fw-bold"
+                                    href="booking_data.html">View Booking 1</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item ps-4 text-dark py-2 d-block text-decoration-none fw-bold"
+                                    href="booking_data2.html">View Booking 2</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="logout.html" class="nav-link px-3 py-2 mb-2">
+                    <i class="fas fa-sign-out-alt text-primary me-2 p-2 rounded-2"></i>Logout
+                </a>
+            </div>
+        </div>
+        <!-- end sidebar -->
+
+        <!-- content -->
+        <div class="main-content">
+            <div class="position-fixed bottom-0 end-0 m-4 border p-1 rounded-circle z-2">
+                <a href=""><img src="assets/images/whatsapp.png" width="50" alt="whatsapp"></a>
+            </div>
+            <div class="content">
+                <div class="container-fluid" style="background-color: #f6f9fb;">
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="py-2 shadow">
+                                <i class="fas fa-home text-primary px-3 border-end me-2"></i>
+                                <p class="d-inline" style="font-size: 0.9rem;">Home &nbsp;>&nbsp; <strong
+                                        class="text-primary">Registered Agents</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-content p-4">
+                    <div class="container-fluid">
+                        <div class="card shadow-lg border-0 rounded-2">
+                            <div class="card-head bg-primary p-3 rounded-2">
+                                <div class="d-flex justify-content-between">
+                                    <h4 class="text-white fw-bold animate__animated animate__slideInUp">🔒 Registered
+                                        Agents
+                                        :</h4>
+                                    <a href="agent_add.html" class="btn btn-warning rounded-0 fs-6"><i
+                                            class="fas fa-plus me-1"></i>Add agent</a>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between flex-wrap mb-2">
+                                    <input type="text" placeholder="🔍 Search here..." class="form-control rounded-0"
+                                        id="search" style="width: 250px;">
+
+                                    <div class="d-flex align-items-center flex-wrap" style="width: 500px;">
+                                        <input type="date" id="fromDate"
+                                            class="rounded-0 custom-input form-control pb-1" style="width: 160px;">
+                                        <span class="mx-3">To</span>
+                                        <input type="date" id="toDate" class="rounded-0 custom-input form-control pb-1"
+                                            style="width: 160px;">
+                                        <button type="submit" id="findBtn"
+                                            class="btn btn-dark text-nowrap rounded-0 ms-4 px-3 pb-1">Find
+                                            Now</button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered text-center text-nowrap" id="example">
+                                        <thead class="table-primary">
+                                            <tr>
+                                                <th scope="col">Sr.</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Image</th>
+                                                <th scope="col">Comp. Name</th>
+                                                <th scope="col">Total Book.</th>
+                                                <th scope="col">Total Reve.</th>
+                                                <th scope="col">Pend. Vouch.</th>
+                                                <th scope="col">Comp. Vouch.</th>
+                                                <th scope="col">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table-body">
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>John Wick</td>
+                                                <td>john@gmail.com</td>
+                                                <td><img src="assets/images/profile.jpeg" class="rounded-circle"
+                                                        width="50" alt=""></td>
+                                                <td class="text-uppercase">it world</td>
+                                                <td>8</td>
+                                                <td>$55000</td>
+                                                <td>5</td>
+                                                <td>10</td>
+                                                <td class="text-nowrap">
+                                                    <a href="" class="btn btn-outline-warning px-2 py-1 rounded-0"
+                                                        style="font-size: 0.8rem;" data-bs-toggle="modal"
+                                                        data-bs-target="#viewDetails">View</a>
+                                                    <a class="btn btn-outline-primary px-2 py-1 rounded-0"
+                                                        style="font-size: 0.8rem;" data-bs-toggle="modal"
+                                                        data-bs-target="#editModal">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Abraham Benjaman</td>
+                                                <td>abraham@gmail.com</td>
+                                                <td><img src="assets/images/profile.jpeg" class="rounded-circle"
+                                                        width="50" alt=""></td>
+                                                <td class="text-uppercase">it world</td>
+                                                <td>8</td>
+                                                <td>$55000</td>
+                                                <td>5</td>
+                                                <td>10</td>
+                                                <td class="text-nowrap">
+                                                    <a href="" class="btn btn-outline-warning px-2 py-1 rounded-0"
+                                                        style="font-size: 0.8rem;" data-bs-toggle="modal"
+                                                        data-bs-target="#viewDetails">View</a>
+                                                    <a href="" class="btn btn-outline-primary px-2 py-1 rounded-0"
+                                                        style="font-size: 0.8rem;" data-bs-toggle="modal"
+                                                        data-bs-target="#editModal">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>John Wick</td>
+                                                <td>john@gmail.com</td>
+                                                <td><img src="assets/images/profile.jpeg" class="rounded-circle"
+                                                        width="50" alt=""></td>
+                                                <td class="text-uppercase">it world</td>
+                                                <td>8</td>
+                                                <td>$55000</td>
+                                                <td>5</td>
+                                                <td>10</td>
+                                                <td class="text-nowrap">
+                                                    <a href="" class="btn btn-outline-warning px-2 py-1 rounded-0"
+                                                        style="font-size: 0.8rem;" data-bs-toggle="modal"
+                                                        data-bs-target="#viewDetails">View</a>
+                                                    <a href="" class="btn btn-outline-primary px-2 py-1 rounded-0"
+                                                        style="font-size: 0.8rem;" data-bs-toggle="modal"
+                                                        data-bs-target="#editModal">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td>Thomas</td>
+                                                <td>thomas@gmail.com</td>
+                                                <td><img src="assets/images/profile.jpeg" class="rounded-circle"
+                                                        width="50" alt=""></td>
+                                                <td class="text-uppercase">it world</td>
+                                                <td>8</td>
+                                                <td>$55000</td>
+                                                <td>5</td>
+                                                <td>10</td>
+                                                <td class="text-nowrap">
+                                                    <a href="" class="btn btn-outline-warning px-2 py-1 rounded-0"
+                                                        style="font-size: 0.8rem;" data-bs-toggle="modal"
+                                                        data-bs-target="#viewDetails">View</a>
+                                                    <a href="" class="btn btn-outline-primary px-2 py-1 rounded-0"
+                                                        style="font-size: 0.8rem;" data-bs-toggle="modal"
+                                                        data-bs-target="#editModal">Edit</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- Modal-1 -->
+                                    <div class="modal fade" id="viewDetails" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Admin
+                                                        Details</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Agent
+                                                                Id:</strong>0001</li>
+                                                        <li class="list-group-item"><strong
+                                                                class="text-primary me-2">Agent
+                                                                Name:</strong>Admin</li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Agent
+                                                                Email:</strong>admin@gmail.com</li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Agent
+                                                                Phone:</strong>0345656666</li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Agent
+                                                                Image:</strong><img src="assets/images/profile.jpeg"
+                                                                width="50" alt=""></li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Agent's
+                                                                Company name:</strong> AR
+                                                            Travels LTD
+                                                        </li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Country &
+                                                                City Name:</strong>
+                                                            Pakistan, Faisalabad
+                                                        </li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Street
+                                                                Address:</strong> X-555-NYC</li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Total
+                                                                Bookings By
+                                                                Agent:</strong>50 Bookings</li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Pending
+                                                                Vouchers By
+                                                                Agent:</strong>5 Pendings</li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Completed
+                                                                Vouchers By
+                                                                Agent:</strong>25 Completed</li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Commission
+                                                                Earned By
+                                                                Agent:</strong>$50000 Earned</li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Account
+                                                                Status:</strong><span class="badge text-bg-warning"><i
+                                                                    class="fas fa-check-circle me-1"></i>Active</span>
+                                                        </li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Verification
+                                                                Status:</strong><span class="badge text-bg-info"><i
+                                                                    class="fas fa-check-circle me-1"></i>Verified</span>
+                                                        </li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Joined
+                                                                Date:</strong>12-5-2024</li>
+                                                        <li class="list-group-item"><strong
+                                                                class="me-2 text-primary">Last
+                                                                Login:</strong> 10-2-2025</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button"
+                                                        class="btn btn-outline-danger rounded-0">Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal-2 -->
+                                    <div class="modal fade" id="editModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 fw-bold text-primary"
+                                                        id="exampleModalLabel">Edit Admin
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <form>
+                                                                <div class="mb-3">
+                                                                    <label for="exampleInputEmail1"
+                                                                        class="form-label">Email address</label>
+                                                                    <input type="email" class="form-control"
+                                                                        id="exampleInputEmail1"
+                                                                        aria-describedby="emailHelp">
+                                                                    <div id="emailHelp" class="form-text">We'll
+                                                                        never share your email with anyone else.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="exampleInputPassword1"
+                                                                        class="form-label">Password</label>
+                                                                    <input type="password" class="form-control"
+                                                                        id="exampleInputPassword1">
+                                                                </div>
+                                                                <div class="mb-3 form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="exampleCheck1">
+                                                                    <label class="form-check-label"
+                                                                        for="exampleCheck1">Check me out</label>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save
+                                                        changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="container-fluid bg-secondary py-3">
+                    <p class="text-white text-center mb-0">© Reserved By Travelogy admin 2025.</p>
+                </div>
+            </footer>
+        </div>
+        <!-- end content -->
+    </div>
+    <!-- end wrapper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+        integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/sidebar.js"></script>
+    <!-- data tables js -->
+    <script src="assets/libs/DataTables/datatables.min.js"></script>
+    <script>
+        new DataTable('#example');
+    </script>
+</body>
+
+</html>

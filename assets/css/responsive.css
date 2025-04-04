@@ -1,0 +1,26 @@
+@media (max-width: 989px) {
+    .navbar-nav {
+        margin-top: 17px;
+        flex-direction: row !important;
+        justify-content: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin: auto !important;
+    }
+}
+
+@media (max-width: 535px) {
+    .wrapper.sidebar-open .main-content {
+        width: 100%;
+    }
+
+    .navbar-nav form {
+        margin-right: 10px !important;
+    }
+}
+@media (max-width: 480px){
+    .view-flex{
+        flex-direction: column !important;
+    }
+}
